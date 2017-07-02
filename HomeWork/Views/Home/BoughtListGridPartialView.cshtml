@@ -1,5 +1,5 @@
 ﻿@using HomeWork.ViewModels
-<div class="row">
+
     <div class="col-md-12">
         <table class="table table-bordered table-hover">
             <thead>
@@ -12,11 +12,11 @@
             </thead>
             <tbody>
                 @{int c = 0; }
-                @foreach (BoughtItem item in Model.List)
+                @foreach (BoughtItem item in Model.Result)
                 {
-                    <tr>
+                    <tr style="color:@(item.ItemCategory=="支出"?"red":"blue")">
                         <td>@(++c)</td>
-                        <td>@item.ItemCategory</td>
+                        <td >@item.ItemCategory</td>
                         <td>@item.ItemDate</td>
                         <td>@string.Format("{0:C}", item.Price)</td>
                     </tr>
@@ -25,4 +25,4 @@
             </tbody>
         </table>
     </div>
-</div>
+

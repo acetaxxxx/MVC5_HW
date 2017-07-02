@@ -22,9 +22,23 @@ namespace HomeWork.Repositories
 
 		public IEnumerable<Models.AccountBook> selectAllRow()
 		{
-			var list = __hwm.AccountBooks.Select(x => x);
+			var list = __hwm.AccountBooks.Select(x => x).OrderByDescending(x=>x.Dateee);
 
 			return list;
+		}
+
+		public bool WriteData(AccountBook input)
+		{
+			try
+			{
+				input.Id =  Guid.NewGuid();
+				__hwm.AccountBooks.Add(input);
+				return true;
+			}
+			catch
+			{
+				return false;
+			}
 		}
 	}
 }
